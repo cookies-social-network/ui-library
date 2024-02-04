@@ -12,8 +12,8 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/cookies-ui.js",
-      "require": "./dist/cookies-ui.umd.cjs"
+      "import": "./dist/cookies-ui-lib.js",
+      "require": "./dist/cookies-ui-lib.umd.cjs"
     }
   },
   "scripts": {
