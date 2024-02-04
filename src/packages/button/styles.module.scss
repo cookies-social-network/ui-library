@@ -1,0 +1,21 @@
+.base-button {
+  $root: &;
+
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #020202;
+
+  &__prefix-icon {
+    margin-right: 12px;
+  }
+
+  &__suffix-icon {
+    margin-left: 12px;
+  }
+
+  &--secondary {
+    background-color: #f90;
+  }
+}

@@ -1,1 +1,1 @@
-export { UiButton } from './button'
+export { CnButton } from './button'

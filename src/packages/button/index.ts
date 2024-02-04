@@ -1,1 +1,1 @@
-export { UiButton } from './UiButton.tsx'
+export { CnButton } from './CnButton.tsx'
