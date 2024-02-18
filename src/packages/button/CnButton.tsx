@@ -30,10 +30,10 @@ const InnerButton  = (
     } = props
 
 
-    const classNames = cn('base-button', cx(
-        'base-button',
-        `base-button--${size}`,
-        `base-button--${appearance}`,
+    const classNames = cn('cn-button', cx(
+        'cn-button',
+        `cn-button--${size}`,
+        `cn-button--${appearance}`,
         { 'icon-only': icon && !children }
     ), className)
 
@@ -42,17 +42,17 @@ const InnerButton  = (
             { icon && !children && icon }
 
             { prefixIcon && (
-                <div className={cn('base-button__prefix-icon', cx('base-button__prefix-icon'))}>
+                <div className={cn('cn-button__prefix-icon', cx('cn-button__prefix-icon'))}>
                     { prefixIcon }
                 </div>
             ) }
 
-            <span className={cn('base-button__content')}>
+            <span className={cn('cn-button__content')}>
         { children && children }
       </span>
 
             { suffixIcon && (
-                <div className={cn('base-button__suffix-icon', cx('base-button__suffix-icon'))}>
+                <div className={cn('cn-button__suffix-icon', cx('cn-button__suffix-icon'))}>
                     { suffixIcon }
                 </div>
             ) }
