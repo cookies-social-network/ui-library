@@ -1,4 +1,5 @@
 import type { StorybookConfig } from "@storybook/react-vite";
+import {mergeConfig} from "vite";
 
 const config: StorybookConfig = {
   stories: [
@@ -21,6 +22,15 @@ const config: StorybookConfig = {
   },
   core: {
     builder: '@storybook/builder-vite',
+  },
+  async viteFinal(config) {
+    // Merge custom configuration into the default config
+    return mergeConfig(config, {
+      // Add dependencies to pre-optimization
+      optimizeDeps: {
+        include: ['storybook-dark-mode'],
+      },
+    });
   },
 };
 export default config;

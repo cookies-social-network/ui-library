@@ -1,11 +1,33 @@
+@use 'sass:color';
+
 .cn-button {
   $root: &;
 
+  --cn-button-color: var(--color-black);
+  --ch-button-background-color: transparent;
+  --ch-button-border-radius: 100px;
+  --ch-button-padding-vertical: 10px;
+  --ch-button-padding-horizontal: 24px;
+  --ch-button-font-size: 14px;
+  --ch-button-border-width: 0;
+  --ch-button-border-color: transparent;
+  --ch-button-font-weight: 500;
+
   display: flex;
   align-items: center;
-  border-radius: 8px;
-  font-size: 16px;
-  color: #020202;
+  border-radius: var(--ch-button-border-radius);
+  font-size: var(--cn-button-color);
+  color: var(--cn-button-color);
+  background-color: var(--ch-button-background-color);
+  border-width: var(--ch-button-border-width);
+  border-color: var(--ch-button-border-color);
+  font-weight: var(--ch-button-font-weight);
+  padding: var(--ch-button-padding-vertical) var(--ch-button-padding-horizontal);
+  border-style: solid;
+  letter-spacing: 0.1px;
+  cursor: pointer;
+  transition: box-shadow var(--animation-time) linear;
+
 
   &__prefix-icon {
     margin-right: 12px;
@@ -15,7 +37,33 @@
     margin-left: 12px;
   }
 
-  &--secondary {
-    background-color: #f90;
+  &__content {
+    font-weight: var(--ch-button-font-weight);
+  }
+
+  &--filled {
+    --ch-button-background-color: var(--color-primary-40);
+    --cn-button-color: var(--color-white);
+
+    &:not(&:disabled) {
+      &:hover {
+        box-shadow: var(--box-shadow-1);
+      }
+
+      &:active {
+        --ch-button-background-color: var(--color-primary-40-12)
+      }
+    }
+
+    &:disabled {
+      --ch-button-background-color: var(--color-grey-e4);
+      --cn-button-color: var(--color-sys-light-on-surface);
+      cursor: not-allowed;
+    }
+  }
+
+  &--outlined {
+    --ch-button-border-color: var(--color-neutral-50);
+    --ch-button-border-width: 1px;
   }
 }

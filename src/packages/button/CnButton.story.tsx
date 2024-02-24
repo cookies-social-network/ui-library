@@ -5,7 +5,6 @@ const meta = {
     title: 'CnButton',
     component: CnButton,
     parameters: {
-        // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
         layout: 'centered',
     },
     tags: ['autodocs'],
@@ -18,15 +17,22 @@ type Story = StoryObj<typeof meta>
 export const Primary: Story = {
     args: {
         type: 'button',
-        children: 'Пока',
-        appearance: 'primary'
+        children: 'Label',
+        appearance: 'filled'
     },
 }
 
-export const Secondary: Story = {
+export const PrimaryDisabled: Story = {
+  args: {
+    children: 'Label',
+    appearance: 'filled',
+    disabled: true,
+  }
+}
+
+export const Outlined: Story = {
     args: {
-        type: 'submit',
-        children: 'Привет',
-        appearance: 'secondary'
+        children: 'Label',
+        appearance: 'outlined'
     },
 };
