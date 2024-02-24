@@ -39,8 +39,10 @@ const InnerButton  = (
       'cn-button',
       `cn-button--${size}`,
       `cn-button--${appearance}`,
+      { 'with-icon': props.prefixIcon || props.suffixIcon },
       { 'icon-only': icon && !children }
   ), className)
+
 
   const handleClick: MouseEventHandler<HTMLButtonElement> = (e) => {
     if (props.disabled) return
