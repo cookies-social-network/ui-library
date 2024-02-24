@@ -1,0 +1,42 @@
+@use 'sass:color';
+
+@function mixColor($color1, $color2, $weight) {
+  @return color.mix($color1, $color2, $weight: $weight);
+}
+
+// Определение цветов
+$color-white: #fff;
+$color-black: #000;
+$color-sys-light-primary: #6750a4;
+$color-sys-light-on-primary-8: rgba($color-sys-light-primary, 0.08);
+$color-sys-light-on-primary-12: rgba($color-sys-light-primary, 0.12);
+$color-sys-light-on-primary-white-12: mixColor($color-sys-light-primary, $color-white, 88%);
+$color-neutral-50: #79747e;
+$color-sys-light-on-surface: #1D1B20;
+$color-sys-light-on-surface-12: rgba($color-sys-light-on-surface, 0.12);
+$color-sys-light-outline: #79747e;
+$color-sys-light-surface-container-low: #F7F2FA;
+$color-sys-light-secondary-container: #E8DEF8;
+$color-sys-light-secondary-black-container-12: mixColor($color-sys-light-secondary-container, $color-black, 88%);
+
+// Определение font-sizes
+$font-size-lg:  14px;
+
+// Определение других переменных
+$animation-time:  0.15s;
+
+$colors: (
+  white: $color-white,
+  black: $color-black,
+  sys-light-primary: $color-sys-light-primary,
+  sys-light-on-primary-8: $color-sys-light-on-primary-8,
+  sys-light-on-primary-12: $color-sys-light-on-primary-12,
+  sys-light-on-primary-white-12: $color-sys-light-on-primary-white-12,
+  neutral-50: $color-neutral-50,
+  sys-light-on-surface: $color-sys-light-on-surface,
+  sys-light-on-surface-12: $color-sys-light-on-surface-12,
+  sys-light-outline: $color-sys-light-outline,
+  sys-light-surface-container-low: $color-sys-light-surface-container-low,
+  sys-light-secondary-container: $color-sys-light-secondary-container,
+  sys-light-secondary-black-container-12: $color-sys-light-secondary-black-container-12,
+);
