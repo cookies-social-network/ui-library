@@ -1,0 +1,12 @@
+.cn-input {
+  display: flex;
+  align-items: center;
+
+  --cn-input-placeholder-color: var(--color-sys-light-primary);
+
+  &__inner {
+    &::placeholder {
+      color: var(--cn-input-placeholder-color);
+    }
+  }
+}

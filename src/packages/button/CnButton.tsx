@@ -3,6 +3,8 @@ import cn from 'classnames'
 import cb from 'classnames/bind'
 import styles from './styles.module.scss'
 
+// DEBT: Добавить loading.
+
 const cx = cb.bind(styles)
 
 interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
@@ -26,7 +28,7 @@ const InnerButton  = (
       children,
       prefixIcon,
       suffixIcon,
-    onClick,
+      onClick,
       ...restProps
   } = props
 
