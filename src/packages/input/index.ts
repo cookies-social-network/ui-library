@@ -1,1 +1,1 @@
-export { CnInput } from './CnInput.tsx'
+export { CnInput } from '@/packages/input/ui/CnInput'

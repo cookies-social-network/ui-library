@@ -1,11 +1,11 @@
-import {forwardRef, InputHTMLAttributes, ReactNode, Ref} from "react";
+import { forwardRef, InputHTMLAttributes, ReactNode, Ref } from 'react'
 import cn from 'classnames'
 import cb from 'classnames/bind'
 import styles from './styles.module.scss'
 
 const cx = cb.bind(styles)
 
-interface ICnProps extends InputHTMLAttributes<HTMLInputElement> {
+interface ICnProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'prefix' | 'suffix'> {
   prefix?: ReactNode
   suffix?: ReactNode
 }
@@ -40,9 +40,9 @@ export const InnerInput = (props: ICnProps, ref: Ref<HTMLDivElement>) => {
 
       {
         suffix && (
-        <div className={cn('cn-input__prefix', cx('cn-input__prefix'))}>
-          { suffix }
-        </div>
+          <div className={cn('cn-input__prefix', cx('cn-input__prefix'))}>
+            { suffix }
+          </div>
         )
       }
     </div>

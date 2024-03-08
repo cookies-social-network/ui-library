@@ -1,8 +1,8 @@
 .cn-input {
+  --cn-input-placeholder-color: var(--color-sys-light-primary);
+
   display: flex;
   align-items: center;
-
-  --cn-input-placeholder-color: var(--color-sys-light-primary);
 
   &__inner {
     &::placeholder {
