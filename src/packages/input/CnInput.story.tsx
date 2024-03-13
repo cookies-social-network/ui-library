@@ -14,8 +14,22 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-export const Primary: Story = {
+export const Default: Story = {
   args: {
     placeholder: 'Im placeholder',
+  }
+}
+
+export const Filled: Story = {
+  args: {
+    placeholder: 'Im placeholder',
+    value: 'Filled',
+  }
+}
+
+export const Disabled: Story = {
+  args: {
+    placeholder: 'Disabled',
+    disabled: true,
   }
 }

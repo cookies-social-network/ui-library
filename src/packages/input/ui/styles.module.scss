@@ -1,12 +1,62 @@
 .cn-input {
-  --cn-input-placeholder-color: var(--color-sys-light-primary);
+  --cn-input-placeholder-color: var(--color-sys-light-on-primary-12);
+  --cn-input-color-outline: var(--color-sys-light-on-primary-12);
+  --cn-input-color: var(--color-sys-light-on-primary-8);
+  --cn-input-border-raduis: 8px;
+  --cn-input-font-size: 14px;
+  --cn-input-line-height: 22px;
+  --cn-input-padding-vertical: 10px;
+  --cn-input-padding-horizontal: 14px;
+  --cn-input-color-background: var(--color-white);
+  --cn-input-box-shadow-color: var(--color-sys-light-on-primary-8);
 
-  display: flex;
-  align-items: center;
+  border-radius: var(--cn-input-border-raduis);
+  font-size: var(--cn-input-font-size);
+  line-height: var(--cn-input-line-height);
+  color: var(--cn-input-color);
+  background-color: var(--cn-input-color-background);
+  padding: var(--cn-input-padding-vertical) var(--cn-input-padding-horizontal);
+  outline-color: var(--cn-input-color-outline);
+  outline-style: solid;
+  outline-width: 1px;
+  transition: outline-color var(--animation-time) linear, box-shadow var(--animation-time) linear;
+  box-shadow: 0 0 0 0 var(--cn-input-box-shadow-color);
+
+  $root: &;
 
   &__inner {
+    width: 100%;
+    outline: none;
+    border: none;
+    background: none;
+
+    &.textarea {
+      font-size: 20px;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+
     &::placeholder {
       color: var(--cn-input-placeholder-color);
     }
+  }
+
+  &.is-focus {
+    --cn-input-color-outline: var(--color-sys-light-primary);
+    box-shadow: 0 0 0 4px var(--cn-input-box-shadow-color);
+  }
+
+  &.disabled {
+    --cn-input-color-background: var(--color-sys-light-surface-container-low);
+    pointer-events: none;
+    user-select: none;
   }
 }
