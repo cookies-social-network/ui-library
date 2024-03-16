@@ -21,6 +21,8 @@
   outline-width: 1px;
   transition: outline-color var(--animation-time) linear, box-shadow var(--animation-time) linear;
   box-shadow: 0 0 0 0 var(--cn-input-box-shadow-color);
+  display: flex;
+  align-items: center;
 
   $root: &;
 
@@ -49,8 +51,29 @@
     }
   }
 
+  &__prefix,
+  &__suffix {
+    color: var(--color-black);
+    font-size: 18px;
+  }
+
+  &__prefix {
+    padding-right: 8px;
+    height: 18px;
+  }
+
+  &__suffix {
+    padding-left: 8px;
+    height: 18px;
+  }
+
   &.is-focus {
     --cn-input-color-outline: var(--color-sys-light-primary);
+    box-shadow: 0 0 0 4px var(--cn-input-box-shadow-color);
+  }
+
+  &.is-error {
+    --cn-input-color-outline: var(--color-sys-light-error);
     box-shadow: 0 0 0 4px var(--cn-input-box-shadow-color);
   }
 
@@ -58,5 +81,10 @@
     --cn-input-color-background: var(--color-sys-light-surface-container-low);
     pointer-events: none;
     user-select: none;
+
+    #{$root}__prefix,
+    #{$root}__suffix {
+      color: var(--color-sys-light-on-surface-variant);
+    }
   }
 }

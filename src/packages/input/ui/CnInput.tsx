@@ -1,51 +1,32 @@
-import {
-  ChangeEvent,
-  ChangeEventHandler, FocusEventHandler,
-  forwardRef,
-  InputHTMLAttributes,
-  MouseEventHandler,
-  ReactNode,
-  Ref, useRef,
-  useState,
-} from 'react'
+import { ChangeEventHandler, FocusEventHandler, useRef, useState, forwardRef } from 'react'
 import cn from 'classnames'
+import { ICnProps } from '@/types'
 import cb from 'classnames/bind'
 import styles from './styles.module.scss'
-import { HTMLDivElement, HTMLInputElement } from 'happy-dom'
+import { IconEmail } from '@/icons'
 
 const cx = cb.bind(styles)
 
-interface ICnProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'prefix' | 'suffix' | 'onClick'> {
-  prefix?: ReactNode
-  suffix?: ReactNode
-  onClick?: HTMLDivElement['onclick']
-}
-
-export const InnerInput = (props: ICnProps, ref: Ref<HTMLDivElement>) => {
+export const CnInput = forwardRef<HTMLInputElement, ICnProps>(function CnInput(props, ref){
   const {
     className,
     prefix,
     suffix,
-    type,
-    onClick,
     onChange,
     onBlur,
     ...restProps
   } = props
 
-  const inputInnerProps = {
-    ...restProps,
-  }
-
-  const [value, setValue] = useState<string | number>()
+  const [value, setValue] = useState<string | number | undefined>(restProps.value as string)
   const [isFocused, setIsFocused] = useState(false)
 
-  const inputRef = useRef<HTMLInputElement | undefined>()
+  const inputRef = useRef<HTMLInputElement>(null)
 
   const classNames = cn('cn-input', cx(
     'cn-input',
     { 'full-filled': value },
     { 'is-focus': isFocused },
+    { 'is-error': props.error },
     { disabled: props.disabled },
   ), className)
 
@@ -53,6 +34,8 @@ export const InnerInput = (props: ICnProps, ref: Ref<HTMLDivElement>) => {
     if (props.disabled) return
 
     setValue(event.target.value)
+
+    onChange?.(event)
   }
 
   const onBlurHandler: FocusEventHandler<HTMLInputElement> | undefined = (event) => {
@@ -65,10 +48,9 @@ export const InnerInput = (props: ICnProps, ref: Ref<HTMLDivElement>) => {
     setIsFocused(false)
   }
 
-  const onClickHandler: MouseEventHandler<HTMLElement> = (event) => {
+  const onClickHandler = () => {
     if (props.disabled || !inputRef.current) return
 
-    onClick?.(event)
 
     inputRef.current.focus()
 
@@ -76,32 +58,44 @@ export const InnerInput = (props: ICnProps, ref: Ref<HTMLDivElement>) => {
   }
 
   return (
-    <div className={classNames} ref={ref} onClick={onClickHandler}>
-      {
-        prefix && (
+    <>
+      <div className={classNames} ref={ref} onClick={onClickHandler}>
+        {prefix && (
           <div className={cn('cn-input__prefix', cx('cn-input__prefix'))}>
-            { prefix }
+            {prefix}
+          </div>
+        )}
+
+        {
+          props.type === 'email' && (
+            <div className={cn('cn-input__prefix', cx('cn-input__prefix'))}>
+              {<IconEmail />}
+            </div>
+          )
+        }
+
+        <input
+          ref={inputRef}
+          className={cn('cn-input__inner', cx('cn-input__inner'))}
+          onChange={onChangeHandler}
+          onBlur={onBlurHandler}
+          {...restProps}
+        />
+
+        {suffix && (
+          <div className={cn('cn-input__suffix', cx('cn-input__suffix'))}>
+            {suffix}
+          </div>
+        )}
+      </div>
+
+      {
+        props.error && (
+          <div className={cn('cn-input__error', cx('cn-input__error'))}>
+            { props.error }
           </div>
         )
       }
-
-      <input
-        ref={inputRef}
-        className={cn('cn-input__inner', cx('cn-input__inner'))}
-        onChange={onChangeHandler}
-        onBlur={onBlurHandler}
-        {...inputInnerProps}
-      />
-
-      {
-        suffix && (
-          <div className={cn('cn-input__prefix', cx('cn-input__prefix'))}>
-            { suffix }
-          </div>
-        )
-      }
-    </div>
+    </>
   )
-}
-
-export const CnInput = forwardRef<HTMLDivElement, ICnProps>(InnerInput)
+})

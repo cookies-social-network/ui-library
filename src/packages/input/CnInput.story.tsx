@@ -33,3 +33,18 @@ export const Disabled: Story = {
     disabled: true,
   }
 }
+
+export const TypeEmail: Story = {
+  args: {
+    placeholder: 'Im placeholder',
+    type: 'email',
+  }
+}
+
+export const DisabledEmail: Story = {
+  args: {
+    placeholder: 'Im placeholder',
+    type: 'email',
+    disabled: true,
+  }
+}
