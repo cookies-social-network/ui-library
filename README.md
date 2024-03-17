@@ -1,48 +1,39 @@
-## Заполнить .env
-Скопировать `.env.exmaple`
-```bash
-cp .env.example .env.
+## @cookies-social-network/components
+
+# TODO:
+- [ ] Проверить установку зависимостей отдельных приложений.
+- [ ] Проверить установку зависимостей монорепозитория.
+
+### Отдельный запуск приложения при помощи:
+```cmd
+yarn install --frozen-lockfile
+yarn storybook
 ```
-
-Заполнить данные.
-
-## Установка зависимостей отдельного MFE
-```bash
-pnpm i --frozen-lockfile
+### Для запуска всех npm библиотек нужно:
+1. Создать структуру.
+```cmd
+/cookies-lib
+  /packages
+    /components - UIKit проекта.
+    /lib - Вспомогательные утилиты проекта.
+  package.json
+  pnpm-lock.yaml
+  pnpm-workspace.yaml
 ```
-
-## Локальная разработка отдельного MFE
-```bash
-pnpm dev
+2. При помощи **pnpm** установить зависимости.
+```cmd
+pnpm install --frozen-lockfile
 ```
+3. Для запуска каждой библиотеки из монорепозитория:
+  1. Зайти в нужный репозиторий (lib / components)
+  2. pnpm install --frozen-lockfile // создает ссылки на главный пакет node-modules
+  3. pnpm storybook
 
-Для того чтобы заставить микрофронтенд работать на **host’е** нужно:
+[UiKit 1](https://pixso.net/app/editor/BJ9AbjwROaGXzRaz1lqRrg?icon_type=1&page-id=47909%3A2&item-id=52805%3A28112)
 
-```bash
-pnpm remote
+[UiKit 2](https://pixso.net/app/editor/mW4yFV6QRQZLYldl68nT7A?icon_type=1&page-id=1480%3A0)
+
 ```
-Или:
-
-```bash
-pnpm build
-pnpm preview
-```
-
-## Запуск всех MFE 
-После того как все микрофронты запустятся нужно будет сделать следующее:
-
-### Локальная разработка
-```bash
-pnpm dev
-```
-
-### Production
-```bash
-pnpm remote
-```
-Или:
-
-```bash
-pnpm build
-pnpm preview
+npm version patch
+npm publish --access public
 ```
