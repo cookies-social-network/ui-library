@@ -1,33 +1,37 @@
-# React + TypeScript + Vite
+## @cookies-social-network/components
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# TODO:
+- [ ] Проверить установку зависимостей отдельных приложений.
+- [ ] Проверить установку зависимостей монорепозитория.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+### Отдельный запуск приложения при помощи:
+```cmd
+yarn install --frozen-lockfile
+yarn storybook
 ```
+### Для запуска всех npm библиотек нужно:
+1. Создать структуру.
+```cmd
+/cookies-lib
+  /packages
+    /components - UIKit проекта.
+    /lib - Вспомогательные утилиты проекта.
+  package.json
+  pnpm-lock.yaml
+  pnpm-workspace.yaml
+```
+2. При помощи **pnpm** установить зависимости.
+```cmd
+pnpm install --frozen-lockfile
+```
+3. Для запуска каждой библиотеки из монорепозитория:
+   1. Зайти в нужный репозиторий (lib / components)
+   2. pnpm install --frozen-lockfile // создает ссылки на главный пакет node-modules
+   3. pnpm storybook
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+[UiKit 1](https://pixso.net/app/editor/BJ9AbjwROaGXzRaz1lqRrg?icon_type=1&page-id=47909%3A2&item-id=52805%3A28112)
+
+[UiKit 2](https://pixso.net/app/editor/mW4yFV6QRQZLYldl68nT7A?icon_type=1&page-id=1480%3A0)
 
 ```
 npm version patch

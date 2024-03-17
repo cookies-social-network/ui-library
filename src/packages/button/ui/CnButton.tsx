@@ -1,7 +1,9 @@
-import {ButtonHTMLAttributes, forwardRef, MouseEventHandler, ReactElement, ReactNode, Ref} from 'react'
+import { ButtonHTMLAttributes, forwardRef, MouseEventHandler, ReactElement, ReactNode, Ref } from 'react'
 import cn from 'classnames'
 import cb from 'classnames/bind'
 import styles from './styles.module.scss'
+
+// DEBT: Добавить loading.
 
 const cx = cb.bind(styles)
 
@@ -26,7 +28,7 @@ const InnerButton  = (
       children,
       prefixIcon,
       suffixIcon,
-    onClick,
+      onClick,
       ...restProps
   } = props
 
@@ -43,7 +45,6 @@ const InnerButton  = (
       { 'icon-only': icon && !children }
   ), className)
 
-
   const handleClick: MouseEventHandler<HTMLButtonElement> = (e) => {
     if (props.disabled) return
 
@@ -51,23 +52,23 @@ const InnerButton  = (
   }
 
   return (
-    <button className={classNames} ref={ref} {...buttonProps} onClick={handleClick}>
+    <button className={classNames} ref={ref} {...buttonProps} data-tid={'cn-button'} onClick={handleClick}>
       { icon && !children && icon }
 
       { prefixIcon && (
-          <div className={cn('cn-button__prefix-icon', cx('cn-button__prefix-icon'))}>
-              { prefixIcon }
-          </div>
+        <div className={cn('cn-button__prefix-icon', cx('cn-button__prefix-icon'))}>
+          { prefixIcon }
+        </div>
       ) }
 
-    <span className={cn('cn-button__content')}>
+      <span className={cn('cn-button__content')}>
         { children && children }
-    </span>
+      </span>
 
       { suffixIcon && (
-          <div className={cn('cn-button__suffix-icon', cx('cn-button__suffix-icon'))}>
-              { suffixIcon }
-          </div>
+        <div className={cn('cn-button__suffix-icon', cx('cn-button__suffix-icon'))}>
+          { suffixIcon }
+        </div>
       ) }
     </button>
   )

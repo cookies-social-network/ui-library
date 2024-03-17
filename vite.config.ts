@@ -2,9 +2,9 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { resolve } from 'path'
 import dts from 'vite-plugin-dts'
+import { fileURLToPath, URL } from 'node:url'
 import { libInjectCss } from 'vite-plugin-lib-inject-css'
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
@@ -25,4 +25,13 @@ export default defineConfig({
       external: ['react', 'react/jsx-runtime'],
     }
   },
+  test: {
+    globals: true,
+    environment: 'happy-dom',
+  },
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    }
+  }
 })

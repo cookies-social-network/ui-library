@@ -1,8 +1,6 @@
 @use 'sass:color';
 
 .cn-button {
-  $root: &;
-
   --cn-button-color: var(--color-black);
   --cn-button-background-color: transparent;
   --cn-button-border-radius: 100px;
@@ -12,32 +10,22 @@
   --cn-button-border-width: 1px;
   --cn-button-border-color: transparent;
   --cn-button-font-weight: 500;
+  $root: &;
 
   display: flex;
   align-items: center;
-  border-radius: var(--cn-button-border-radius);
-  font-size: var(--cn-button-color);
-  color: var(--cn-button-color);
-  background-color: var(--cn-button-background-color);
+  border-style: solid;
   border-width: var(--cn-button-border-width);
   border-color: var(--cn-button-border-color);
+  border-radius: var(--cn-button-border-radius);
   font-weight: var(--cn-button-font-weight);
-  padding: var(--cn-button-padding-vertical) var(--cn-button-padding-horizontal);
-  border-style: solid;
+  font-size: var(--cn-button-color);
   letter-spacing: 0.1px;
-  cursor: pointer;
+  color: var(--cn-button-color);
+  background-color: var(--cn-button-background-color);
   transition: box-shadow var(--animation-time) linear, background-color var(--animation-time) linear;
-
-  &.with-icon {
-    --cn-button-padding-horizontal: 16px;
-  }
-
-  &__prefix-icon,
-  &__suffix-icon {
-    font-size: 18px;
-    width: 18px;
-    height: 18px;
-  }
+  cursor: pointer;
+  padding: var(--cn-button-padding-vertical) var(--cn-button-padding-horizontal);
 
   &__prefix-icon {
     margin-right: 12px;
@@ -49,6 +37,14 @@
 
   &__content {
     font-weight: var(--cn-button-font-weight);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &.with-icon {
+    --cn-button-padding-horizontal: 16px;
   }
 
   &--filled {
@@ -116,6 +112,7 @@
 
       &:hover {
         --cn-button-background-color: var(--color-sys-light-on-primary-8);
+
         box-shadow: var(--box-shadow-2);
       }
 
@@ -139,9 +136,10 @@
       }
 
       &:active {
-        box-shadow: none;
         --cn-button-background-color: var(--color-sys-light-secondary-black-container-12)
-      }
+      ;
+
+        box-shadow: none;}
     }
 
     &:disabled {
@@ -150,7 +148,10 @@
     }
   }
 
-  &:disabled {
-    cursor: not-allowed;
+  &__prefix-icon,
+  &__suffix-icon {
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
   }
 }

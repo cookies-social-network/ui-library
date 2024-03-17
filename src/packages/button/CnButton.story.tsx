@@ -1,6 +1,6 @@
-import {CnButton} from "./CnButton";
-import {Meta, StoryObj} from "@storybook/react";
-import {IconPlus} from "../../icons";
+import { Meta, StoryObj } from '@storybook/react'
+import { IconPlus } from '@/icons'
+import { CnButton } from '@/packages/button/ui/CnButton'
 
 const meta = {
     title: 'CnButton',
@@ -10,7 +10,6 @@ const meta = {
     },
     tags: ['autodocs'],
 } satisfies Meta<typeof CnButton>
-
 
 export default meta
 
@@ -48,7 +47,7 @@ export const Outlined: Story = {
         appearance: 'outlined',
       prefixIcon: <IconPlus />,
     },
-};
+}
 
 export const OutlinedDisabled: Story = {
   args: {
@@ -57,14 +56,14 @@ export const OutlinedDisabled: Story = {
     disabled: true,
     prefixIcon: <IconPlus />,
   },
-};
+}
 
 export const Text: Story = {
   args: {
     children: 'Label',
     appearance: 'text',
   },
-};
+}
 
 export const TextDisabled: Story = {
   args: {
@@ -72,15 +71,14 @@ export const TextDisabled: Story = {
     appearance: 'text',
     disabled: true,
   },
-};
-
+}
 
 export const Elevated: Story = {
   args: {
     children: 'Label',
     appearance: 'elevated',
   },
-};
+}
 
 export const ElevatedDisabled: Story = {
   args: {
@@ -88,14 +86,14 @@ export const ElevatedDisabled: Story = {
     appearance: 'elevated',
     disabled: true,
   },
-};
+}
 
 export const Tonal: Story = {
   args: {
     children: 'Label',
     appearance: 'tonal',
   },
-};
+}
 
 export const TonalDisabled: Story = {
   args: {
@@ -103,5 +101,4 @@ export const TonalDisabled: Story = {
     appearance: 'tonal',
     disabled: true,
   },
-};
-
+}
