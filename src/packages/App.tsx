@@ -1,7 +1,5 @@
 import { CnInput } from '@/packages/input'
-import {  useRef } from 'react'
-import { ICnProps } from '@/types'
-import { HTMLInputElement } from 'happy-dom'
+import { useRef } from 'react'
 
 export const App = () => {
   const inputRef = useRef<HTMLInputElement>(null)

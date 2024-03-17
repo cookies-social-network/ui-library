@@ -48,3 +48,10 @@ export const DisabledEmail: Story = {
     disabled: true,
   }
 }
+
+export const WithError: Story = {
+  args: {
+    placeholder: 'Im placeholder',
+    error: 'Some error',
+  }
+}

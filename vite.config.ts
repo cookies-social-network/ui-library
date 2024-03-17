@@ -1,16 +1,9 @@
-/// <reference types="vitest" />
-/// <reference types="vite/client" />
-
-import { defineConfig, InlineConfig, UserConfig } from 'vite'
+import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { resolve } from 'path'
 import dts from 'vite-plugin-dts'
 import { fileURLToPath, URL } from 'node:url'
 import { libInjectCss } from 'vite-plugin-lib-inject-css'
-
-interface VitestConfigExport extends UserConfig {
-  test: InlineConfig;
-}
 
 export default defineConfig({
   plugins: [
@@ -41,4 +34,4 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     }
   }
-} as VitestConfigExport)
+})

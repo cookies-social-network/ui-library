@@ -51,7 +51,6 @@ export const CnInput = forwardRef<HTMLInputElement, ICnProps>(function CnInput(p
   const onClickHandler = () => {
     if (props.disabled || !inputRef.current) return
 
-
     inputRef.current.focus()
 
     setIsFocused(!isFocused)
@@ -59,7 +58,7 @@ export const CnInput = forwardRef<HTMLInputElement, ICnProps>(function CnInput(p
 
   return (
     <>
-      <div className={classNames} ref={ref} onClick={onClickHandler}>
+      <div className={classNames} ref={ref} data-tid={'cn-input'} onClick={onClickHandler}>
         {prefix && (
           <div className={cn('cn-input__prefix', cx('cn-input__prefix'))}>
             {prefix}
@@ -91,7 +90,7 @@ export const CnInput = forwardRef<HTMLInputElement, ICnProps>(function CnInput(p
 
       {
         props.error && (
-          <div className={cn('cn-input__error', cx('cn-input__error'))}>
+          <div className={cn('cn-input__error', cx('cn-input__error'))} data-tid={'cn-input-error'}>
             { props.error }
           </div>
         )
