@@ -1,5 +1,6 @@
-import { CnInput } from '@/packages/input'
 import { useRef } from 'react'
+
+import { CnInput } from '@/packages/input'
 
 export const App = () => {
   const inputRef = useRef<HTMLInputElement>(null)

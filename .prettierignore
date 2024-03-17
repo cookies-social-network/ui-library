@@ -1,6 +1,8 @@
 # Folders
 node_modules/
 public/
+dist/
+build/
 
 # Files
 tsconfig.json

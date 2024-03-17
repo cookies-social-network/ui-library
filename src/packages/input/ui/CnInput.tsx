@@ -1,9 +1,11 @@
-import { ChangeEventHandler, FocusEventHandler, useRef, useState, forwardRef } from 'react'
 import cn from 'classnames'
-import { ICnProps } from '@/types'
 import cb from 'classnames/bind'
+import { ChangeEventHandler, FocusEventHandler, useRef, useState, forwardRef } from 'react'
+
 import styles from './styles.module.scss'
+
 import { IconEmail } from '@/icons'
+import { ICnProps } from '@/types'
 
 const cx = cb.bind(styles)
 

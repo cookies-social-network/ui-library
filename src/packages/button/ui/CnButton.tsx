@@ -1,6 +1,7 @@
-import { ButtonHTMLAttributes, forwardRef, MouseEventHandler, ReactElement, ReactNode, Ref } from 'react'
 import cn from 'classnames'
 import cb from 'classnames/bind'
+import { ButtonHTMLAttributes, forwardRef, MouseEventHandler, ReactElement, ReactNode, Ref } from 'react'
+
 import styles from './styles.module.scss'
 
 // DEBT: Добавить loading.

@@ -2,25 +2,71 @@ module.exports = {
   root: true,
   env: { browser: true, es2020: true },
   extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'prettier',
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
     "plugin:react-hooks/recommended",
+    "plugin:storybook/recommended"
   ],
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'build'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     parser: '@typescript-eslint/parser',
     ecmaFeatures: { jsx: true },
     sourceType: 'module',
   },
-  plugins: ['react-refresh', '@typescript-eslint', 'react-hooks', 'react'],
+  plugins: ['react-refresh', '@typescript-eslint', 'react-hooks', 'react', 'import'],
   globals: {
     process: true,
   },
   rules: {
+    'import/order': [
+      'warn',
+      {
+        groups: [['builtin', 'external'], 'internal', 'parent', ['sibling', 'index']],
+        pathGroups: [
+          {
+            pattern: '#app/**',
+            group: 'internal',
+            position: 'before',
+          },
+          {
+            pattern: '#pages/**',
+            group: 'internal',
+            position: 'before',
+          },
+          {
+            pattern: '#widgets/**',
+            group: 'internal',
+            position: 'before',
+          },
+          {
+            pattern: '#features/**',
+            group: 'internal',
+            position: 'before',
+          },
+          {
+            pattern: '#entities/**',
+            group: 'internal',
+            position: 'before',
+          },
+          {
+            pattern: '#shared/**',
+            group: 'internal',
+            position: 'before',
+          },
+        ],
+        'newlines-between': 'always',
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: true,
+          orderImportKind: 'asc',
+        },
+        pathGroupsExcludedImportTypes: ['builtin'],
+      },
+    ],
     "react/jsx-first-prop-new-line": [2, "multiline"],
     "react/jsx-newline": [2, { "prevent": false  }],
     "react/jsx-max-props-per-line": [
@@ -44,6 +90,7 @@ module.exports = {
       2,
       "tag-aligned"
     ],
+    "import/no-anonymous-default-export": "warn",
     "react/no-unknown-property": "off",
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",

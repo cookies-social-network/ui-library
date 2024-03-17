@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
+
 import { CnInput } from '@/packages/input/ui/CnInput'
 
 const meta = {
