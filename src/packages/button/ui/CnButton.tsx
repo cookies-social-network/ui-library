@@ -1,6 +1,6 @@
 import cn from 'classnames'
 import cb from 'classnames/bind'
-import { ButtonHTMLAttributes, forwardRef, MouseEventHandler, ReactElement, ReactNode, Ref } from 'react'
+import { ButtonHTMLAttributes, forwardRef, ReactElement, Ref } from 'react'
 
 import styles from './styles.module.scss'
 
@@ -14,22 +14,21 @@ interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
     icon?: ReactElement
     prefixIcon?: ReactElement
     suffixIcon?: ReactElement
-    children?: ReactNode
 }
 
 const InnerButton  = (
     props: IButtonProps,
-    ref?: Ref<HTMLButtonElement>
+    ref: Ref<HTMLButtonElement>
 ) => {
   const {
-      size = 'md',
-      appearance = 'primary',
-      className = '',
-      icon,
-      children,
-      prefixIcon,
-      suffixIcon,
-      onClick,
+    size = 'md',
+    appearance = 'primary',
+    className = '',
+    icon,
+    children,
+    prefixIcon,
+    suffixIcon,
+    type = 'button',
       ...restProps
   } = props
 
@@ -46,14 +45,8 @@ const InnerButton  = (
       { 'icon-only': icon && !children }
   ), className)
 
-  const handleClick: MouseEventHandler<HTMLButtonElement> = (e) => {
-    if (props.disabled) return
-
-    onClick?.(e)
-  }
-
   return (
-    <button className={classNames} ref={ref} {...buttonProps} data-tid={'cn-button'} onClick={handleClick}>
+    <button className={classNames} type={type} ref={ref} {...buttonProps} data-tid={'cn-button'}>
       { icon && !children && icon }
 
       { prefixIcon && (
@@ -62,7 +55,7 @@ const InnerButton  = (
         </div>
       ) }
 
-      <span className={cn('cn-button__content')}>
+      <span className={cn('cn-button__content', cx('cn-button__content'))}>
         { children && children }
       </span>
 

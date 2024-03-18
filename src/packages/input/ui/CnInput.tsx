@@ -1,6 +1,6 @@
 import cn from 'classnames'
 import cb from 'classnames/bind'
-import { ChangeEventHandler, FocusEventHandler, useRef, useState, forwardRef } from 'react'
+import { ChangeEventHandler, FocusEventHandler, useRef, useState, forwardRef, useImperativeHandle, RefObject } from 'react'
 
 import styles from './styles.module.scss'
 
@@ -9,20 +9,21 @@ import { ICnProps } from '@/types'
 
 const cx = cb.bind(styles)
 
-export const CnInput = forwardRef<HTMLInputElement, ICnProps>(function CnInput(props, ref){
+export const CnInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, ICnProps>(function CnInput(props, ref){
   const {
     className,
     prefix,
     suffix,
     onChange,
     onBlur,
+    type = 'text',
     ...restProps
   } = props
 
   const [value, setValue] = useState<string | number | undefined>(restProps.value as string)
   const [isFocused, setIsFocused] = useState(false)
 
-  const inputRef = useRef<HTMLInputElement>(null)
+  const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null)
 
   const classNames = cn('cn-input', cx(
     'cn-input',
@@ -32,7 +33,7 @@ export const CnInput = forwardRef<HTMLInputElement, ICnProps>(function CnInput(p
     { disabled: props.disabled },
   ), className)
 
-  const onChangeHandler: ChangeEventHandler<HTMLInputElement> = (event) => {
+  const onChangeHandler: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> = (event) => {
     if (props.disabled) return
 
     setValue(event.target.value)
@@ -58,9 +59,32 @@ export const CnInput = forwardRef<HTMLInputElement, ICnProps>(function CnInput(p
     setIsFocused(!isFocused)
   }
 
+  // DEBT: Типизировать.
+  useImperativeHandle(
+    ref,
+    // @ts-ignore
+    () => {
+        return {
+          focus: () => {
+            onClickHandler()
+          },
+        }
+    },
+    []
+  )
+
+  if (type === 'textarea') {
+    return (
+      <textarea
+        ref={inputRef as RefObject<HTMLTextAreaElement>} 
+        onChange={onChangeHandler}
+      />
+    )
+  }
+
   return (
     <>
-      <div className={classNames} ref={ref} data-tid={'cn-input'} onClick={onClickHandler}>
+      <div className={classNames} ref={ref as RefObject<HTMLInputElement>} data-tid={'cn-input'} onClick={onClickHandler}>
         {prefix && (
           <div className={cn('cn-input__prefix', cx('cn-input__prefix'))}>
             {prefix}
@@ -68,7 +92,7 @@ export const CnInput = forwardRef<HTMLInputElement, ICnProps>(function CnInput(p
         )}
 
         {
-          props.type === 'email' && (
+          type === 'email' && (
             <div className={cn('cn-input__prefix', cx('cn-input__prefix'))}>
               {<IconEmail />}
             </div>
@@ -76,7 +100,7 @@ export const CnInput = forwardRef<HTMLInputElement, ICnProps>(function CnInput(p
         }
 
         <input
-          ref={inputRef}
+          ref={inputRef as RefObject<HTMLInputElement>}
           className={cn('cn-input__inner', cx('cn-input__inner'))}
           onChange={onChangeHandler}
           onBlur={onBlurHandler}

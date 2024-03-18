@@ -1,7 +1,8 @@
 import { Meta, StoryObj } from '@storybook/react'
 
-import { IconPlus } from '@/icons'
 import { CnButton } from '@/packages/button/ui/CnButton'
+
+import { IconPlus } from '@/icons'
 
 const meta = {
     title: 'CnButton',

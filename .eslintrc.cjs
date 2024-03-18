@@ -28,32 +28,17 @@ module.exports = {
         groups: [['builtin', 'external'], 'internal', 'parent', ['sibling', 'index']],
         pathGroups: [
           {
-            pattern: '#app/**',
+            pattern: '@/packages/**',
             group: 'internal',
             position: 'before',
           },
           {
-            pattern: '#pages/**',
+            pattern: '@/icons/**',
             group: 'internal',
             position: 'before',
           },
           {
-            pattern: '#widgets/**',
-            group: 'internal',
-            position: 'before',
-          },
-          {
-            pattern: '#features/**',
-            group: 'internal',
-            position: 'before',
-          },
-          {
-            pattern: '#entities/**',
-            group: 'internal',
-            position: 'before',
-          },
-          {
-            pattern: '#shared/**',
+            pattern: '@/styles/**',
             group: 'internal',
             position: 'before',
           },

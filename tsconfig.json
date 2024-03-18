@@ -12,15 +12,6 @@
     "baseUrl": "./",
     "paths": {
       "@/*": ["./src/*"],
-      "~/*": ["./src/*"],
-      "@root/*": [ "./*"],
-      "#app/*": ["./src/app/*"],
-      "#processes/*": ["./src/processes/*"],
-      "#pages/*": ["./src/pages/*"],
-      "#widgets/*": ["./src/widgets/*"],
-      "#features/*": ["./src/features/*"],
-      "#entities/*": ["./src/entities/*"],
-      "#shared/*": ["./src/shared/*"],
     },
     "rootDirs": [
       "./*"

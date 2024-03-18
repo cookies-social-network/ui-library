@@ -1,7 +1,7 @@
 import { configure, render, screen } from '@testing-library/react'
 import { describe, it, expect, beforeEach } from 'vitest'
 
-import { CnInput } from '@/packages'
+import { CnInput } from '@/packages/input/ui/CnInput'
 
 configure({ testIdAttribute: 'data-tid' })
 

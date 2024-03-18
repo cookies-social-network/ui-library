@@ -1,19 +1,18 @@
 import { configure, render, screen } from '@testing-library/react'
 import { describe, it, expect, beforeEach } from 'vitest'
 
-import { CnButton } from '@/packages/button/ui/CnButton'
+import { CnUpload } from '@/packages'
 
 configure({ testIdAttribute: 'data-tid' })
 
 describe('Testing button', () => {
   beforeEach(() => {
-    render(<CnButton>Test text</CnButton>)
+    render(<CnUpload />)
   })
 
   it('should be render', async () =>  {
-    const button  = screen.getByTestId('cn-button')
+    const button  = screen.getByTestId('cn-upload')
 
     expect(button).toBeDefined()
-    expect(button.textContent).toBe('Test text')
   })
 })
