@@ -9,7 +9,7 @@ import { ICnProps } from '@/types'
 
 const cx = cb.bind(styles)
 
-export const CnInput = forwardRef<HTMLInputElement, ICnProps>(function CnInput(props, ref){
+export const CnInput = forwardRef<HTMLInputElement, ICnProps>(function CnInput(props, ref) {
   const {
     className,
     prefix,
